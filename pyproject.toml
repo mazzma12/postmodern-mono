@@ -1,0 +1,20 @@
+[project]
+name = "mono"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.23.1",
+    "pytest>=8.3.4",
+    "ruff>=0.8.5",
+]
+
+[tool.uv.workspace]
+members = ["mylib", "myserver", "unused"]
+
+[tool.uv.sources]
+mylib = { workspace = true }
