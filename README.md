@@ -53,7 +53,7 @@ Note that neither of these definitions are enforced by anything in Python or `uv
 └── apps
     ├── server
     │   ├── pyproject.toml      # this one depends on libs/greeter
-    │   ├── Dockerfile          # this one gets a Dockerfile
+    │   ├── Dockerfile          # and it gets a Dockerfile
     │   └── postmodern
     │       └── server
     │           └── __init__.py
