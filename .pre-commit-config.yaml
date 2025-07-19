@@ -1,0 +1,45 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: check-added-large-files
+    -   id: check-toml
+    -   id: check-yaml
+        args:
+        -   --unsafe
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.5.4
+    hooks:
+      - id: uv-lock
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.1
+    hooks:
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.387
+    hooks:
+      - id: pyright
+        exclude: '^scripts/.*'
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: sh -c "uv sync --all-packages --dev && uv run poe test"
+        types: [python]
+        language: system
+        pass_filenames: false
+        always_run: true
+  - repo: local
+    hooks:
+      - id: pyright
+        name: pyright
+        entry: sh -c "uv sync --all-packages --dev && uv run poe check"
+        types: [python]
+        language: system
+        pass_filenames: false
+        always_run: true
