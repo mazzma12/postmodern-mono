@@ -64,17 +64,27 @@ Note that neither of these definitions are enforced by anything in Python or `uv
 ```
 
 ## Docker
+The server app includes a production-ready Dockerfile with multi-stage builds, security best practices, and optimized caching.
+
 The Dockerfile is at [apps/server/Dockerfile](apps/server/Dockerfile).
 
+### Building the Docker image
 Build the Docker image from the workspace root, so that it has access to all libraries:
 ```bash
 docker build --tag=postmodern-server -f apps/server/Dockerfile .
 ```
 
-And run it:
+### Running the container
+Run the container:
 ```bash
 docker run --rm -it postmodern-server
 ```
+
+### Docker features
+- **Multi-stage build**: Optimized for smaller final image size
+- **Security**: Runs as non-root user (`app`)
+- **Caching**: Uses build mount caches for faster rebuilds
+- **Dependencies**: Properly handles monorepo structure with workspace dependencies
 
 ## Syncing
 To make life easier while you're working across the workspace, you should run:
