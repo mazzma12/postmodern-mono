@@ -172,8 +172,24 @@ dependencies = [
     { name = "urllib3" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "basedpyright" },
+    { name = "poethepoet" },
+    { name = "pytest" },
+    { name = "ruff" },
+]
+
 [package.metadata]
 requires-dist = [{ name = "urllib3", specifier = "~=2.3.0" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "basedpyright", specifier = ">0" },
+    { name = "poethepoet", specifier = ">0" },
+    { name = "pytest", specifier = ">0" },
+    { name = "ruff", specifier = ">0" },
+]
 
 [[package]]
 name = "postmodern-server"
